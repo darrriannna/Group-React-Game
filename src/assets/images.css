@@ -1,0 +1,8 @@
+.sky-background{
+	background: url('./images/background-nightsky.png');
+	height: 100%;
+	width: 100%;
+	img{
+		object-fit: fill;
+	}
+}
