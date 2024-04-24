@@ -1,13 +1,10 @@
 import { BrowserRouter as Router,Routes,  Route } from 'react-router-dom';
-
 import './assets/images.css'
 import './App.css'
 import LevelOne from './Components/LevelOne/LevelOne';
 import Root from './Components/root';
 
 function App() {
-
-
   return (
     <Router>
       <Routes>
