@@ -1,10 +1,11 @@
-import './LevelOne.module.css'
-import nightSky from '../../assets/images/background-nightsky.png'
+import styles from './LevelOne.module.css'
+
 const LevelOne = () => {
     return (
         <>
-        <img src={ nightSky } alt="Night Sky" />
-
+        <div className={styles.levelContainer}>
+        hello
+        </div>
         </>
     )
 }
