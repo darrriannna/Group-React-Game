@@ -1,11 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Montserrat:wght@700&display=swap');
+
+
 .levelContainer {
    width: 100vw;
    height: 102vh;
    background: url('../../assets/images/Moon-play.png') center center no-repeat;
    background-size: 100% 100%;
+   flex-direction: column;
+   display: flex;
+   justify-content: space-between;
+
+   .svg{
+    margin: 0;
+    padding: 0;
+   }
+
+   img{
+    margin: 0;
+    padding: 0;
+   }
+   
+   .gameText{
+    font-family: Montserrat, sans-serif;
+    color: white;
+    font-size: 50px;
+    margin: 0;
+    padding: 0;
+
+    
+}
+
+.topContainer{
+    flex-direction: row;
+   display: flex;
+   justify-content: space-between;
+   width: 100vw;
+}
+.miniContainer1{
+        display: flex;
+        justify-content: space-around;
+        flex-direction: row;
+        width: 30%;
+        padding: 10px;
+    }
+
+.miniContainer2{
+        display: flex;
+        justify-content: space-around;
+        flex-direction: row;
+        width: 40%;
+        padding: 10px;
+    }
+
+    .soundIcon{
+        padding: 15px;
+    }
 }
 
 body{
     background-image: url('../../assets/images/background-nightsky.png');
    overflow: hidden;
 }
+
+

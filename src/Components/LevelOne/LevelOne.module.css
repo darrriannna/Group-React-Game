@@ -1,8 +1,76 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Montserrat:wght@700&display=swap");
 .levelContainer {
   width: 100vw;
   height: 102vh;
   background: url("../../assets/images/Moon-play.png") center center no-repeat;
   background-size: 100% 100%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.levelContainer .svg {
+  margin: 0;
+  padding: 0;
+}
+.levelContainer img {
+  margin: 0;
+  padding: 0;
+}
+.levelContainer .gameText {
+  font-family: Montserrat, sans-serif;
+  color: white;
+  font-size: 50px;
+  margin: 0;
+  padding: 0;
+}
+.levelContainer .topContainer {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100vw;
+}
+.levelContainer .miniContainer1 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  width: 30%;
+  padding: 10px;
+}
+.levelContainer .miniContainer2 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  width: 40%;
+  padding: 10px;
+}
+.levelContainer .soundIcon {
+  padding: 15px;
 }
 
 body {
