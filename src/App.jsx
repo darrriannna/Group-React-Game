@@ -1,5 +1,6 @@
 import { BrowserRouter as Router,Routes,  Route } from 'react-router-dom';
-import './assets/images.css'
+import './Components/style/images.css'
+import './Components/style/buttons.css'
 import './App.css'
 import LevelOne from './Components/LevelOne/LevelOne';
 import Root from './Components/root';
