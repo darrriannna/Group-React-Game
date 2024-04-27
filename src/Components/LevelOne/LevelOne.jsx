@@ -8,7 +8,7 @@ import soundOn from '../../assets/icons/Sound-ON-icon.svg'
 const LevelOne = () => {
     return (
         <>
-            <div className={styles.levelContainer}>
+            <div className={`${styles.levelContainer}`}>
                 <div className={styles.topContainer}>
                 <div className={styles.miniContainer1}>
                 <div className={styles.svg}>

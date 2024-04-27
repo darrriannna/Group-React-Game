@@ -2,7 +2,7 @@
 .levelContainer {
   width: 100vw;
   height: 102vh;
-  background: url("../../assets/images/Moon-play.png") center center no-repeat;
+  background: url("../../assets/images/Moon-play.png") 50% 100% / cover no-repeat;
   background-size: 100% 100%;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
@@ -74,6 +74,6 @@
 }
 
 body {
-  background-image: url("../../assets/images/background-nightsky.png");
+  background: url("../../assets/images/background-nightsky.png") 0 0 / cover no-repeat;
   overflow: hidden;
 }
