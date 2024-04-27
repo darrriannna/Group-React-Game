@@ -9,6 +9,7 @@
    flex-direction: column;
    display: flex;
    justify-content: space-between;
+   position: relative;
 
    .svg{
     margin: 0;
@@ -59,7 +60,81 @@
 
 body{
     background-image: url('../../assets/images/background-nightsky.png');
-   overflow: hidden;
+    
 }
 
+html{
+    overflow: hidden;
+}
 
+.alien{
+    z-index: 2;
+    width: 120px;
+    height: 120px;
+    position: absolute;
+    cursor: pointer;
+}
+
+.appear{
+    animation: appear 0.4s linear;
+}
+.disappear{
+    animation: disappear 0.2s linear forwards;
+}
+
+.a1{
+    top: 220px;
+    left: 46%;
+}
+.a2{
+    top: 330px;
+    left: 25%;
+}
+.a3{
+    top: 330px;
+    left: 69%;
+}
+.a4{
+    top: 500px;
+    left: 21%;
+}
+.a5{
+    top: 500px;
+    left: 69%;
+}
+.a6{
+    top: 390px;
+    left: 46%;
+}
+.a7{
+    top: 530px;
+    left: 46%;
+    
+}
+
+@keyframes appear{
+    from{
+        
+        transform: translateY(90px);
+        clip-path: inset(0 0 100% 0);
+    }
+
+    to{
+        opacity: 1;
+        bottom: 0;
+        clip-path: inset(0 0 0 0);
+    }
+}
+@keyframes disappear{
+    from{
+        bottom: 0;
+        clip-path: inset(0 0 0 0);
+       
+    }
+
+    to{
+        
+        transform: translateY(90px);
+        clip-path: inset(0 0 100% 0);
+    }
+}
