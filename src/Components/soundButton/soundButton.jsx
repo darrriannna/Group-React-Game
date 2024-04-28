@@ -30,7 +30,7 @@ const SoundButton = ({startMusic}) =>{
 			autoPlay
 			loop
 			src={startMusic}
-			onCanPlayThrough={handleToPlay}/>}
+			onCanPlayThrough={handleToPlay}/>} 
 		</div>
 	)
 }

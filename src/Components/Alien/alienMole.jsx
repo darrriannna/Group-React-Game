@@ -7,25 +7,23 @@ import { useState, useEffect } from 'react';
 
 
 // eslint-disable-next-line react/prop-types
-const AlienMole = ({ alienId }) => {
+const AlienMole = ({ alienId, onAlienClick }) => {
 
   const [isHidden, setIsHidden] = useState(false);
 
-  const [isClicked, setIsClicked] = useState(false);
-
-
-
+  const [isClicked, setIsClicked] = useState(false);  
+  
   const handleClick = function () {
     setIsClicked(true)
     setIsHidden(true)
-
+	 
     setTimeout(() => {
-      setIsHidden(false)
-
-      if (!isClicked) {
-        scheduleNextAppearance();
-      }
-    }, 1000);
+		 setIsHidden(false)
+		 if (!isClicked) {
+			 scheduleNextAppearance();
+			}
+		}, 1000);
+		onAlienClick()
   }
 
   useEffect(() => {
