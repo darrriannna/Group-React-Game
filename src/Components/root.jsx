@@ -1,3 +1,4 @@
+import React, {useState} from 'react'
 import logo from "../assets/images/FirstPageAlienLOGO.svg"
 import MainButton  from "./mainButton/mainButton"
 
