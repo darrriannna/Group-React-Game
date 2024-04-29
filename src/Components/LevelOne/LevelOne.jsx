@@ -1,23 +1,21 @@
 import styles from './LevelOne.module.css';
 import pauseButton from '../../assets/icons/Pause-icon.svg'
 import heart from '../../assets/icons/Heart-game-red.svg'
-import soundOn from '../../assets/icons/Sound-ON-icon.svg'
-
 import AlienMole from '../Alien/alienMole';
+import {useState} from 'react'
 
 
 
 
 
 const LevelOne = () => {
-    
-   
+	
+	const [score, setScore] = useState(0)
 
-    
-
-    
-  
-
+	const scoreIncrease = () => {
+		setScore(score + 10)
+		console.log(score);
+	}
     return (
         <>
             <div className={`${styles.levelContainer}`}>
@@ -34,19 +32,16 @@ const LevelOne = () => {
                             <img src={heart} alt="Heart" />
                             <img src={heart} alt="Heart" />
                         </div>
-                        <p className={styles.gameText}>Score: 0</p>
+                        <p className={styles.gameText}>Score: {score}</p>
                     </div>
                 </div>
-                <div className={styles.soundIcon}>
-                    <img src={soundOn} />
-                </div>
-                <AlienMole  alienId={styles.a1} />
-                <AlienMole alienId={styles.a2} />
-                <AlienMole alienId={styles.a3} />
-                <AlienMole alienId={styles.a4} />
-                <AlienMole alienId={styles.a5} />
-                <AlienMole alienId={styles.a6} />
-                <AlienMole alienId={styles.a7} />
+                <AlienMole  alienId={styles.a1} onAlienClick ={scoreIncrease}/>
+                <AlienMole alienId={styles.a2}  onAlienClick ={scoreIncrease}/>
+                <AlienMole alienId={styles.a3}  onAlienClick ={scoreIncrease}/>
+                <AlienMole alienId={styles.a4}  onAlienClick ={scoreIncrease}/>
+                <AlienMole alienId={styles.a5}  onAlienClick ={scoreIncrease}/>
+                <AlienMole alienId={styles.a6}  onAlienClick ={scoreIncrease}/>
+                <AlienMole alienId={styles.a7}  onAlienClick ={scoreIncrease}/>
             </div>
         </>
     )

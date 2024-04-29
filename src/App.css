@@ -68,3 +68,10 @@ button{
 	height: 100%;
 	width: 100%;
 } 
+.music-button{
+	position: absolute;
+	left: 20px;
+	bottom: 20px;
+	height: 100px;
+	width: 100px;
+}
