@@ -15,6 +15,7 @@
       -ms-flex-pack: justify;
           justify-content: space-between;
   position: relative;
+  cursor: none;
 }
 .levelContainer .svg {
   margin: 0;
@@ -87,12 +88,15 @@ html {
   width: 120px;
   height: 120px;
   position: absolute;
-  cursor: pointer;
-	filter: drop-shadow(2px 4px 6px black);
+  -webkit-filter: drop-shadow(2px 4px 6px black);
+          filter: drop-shadow(2px 4px 6px black);
 }
+
 .punched {
-	filter: contrast(0.4)
+  -webkit-filter: contrast(0.4);
+          filter: contrast(0.4);
 }
+
 .appear {
   -webkit-animation: appear 0.4s linear;
           animation: appear 0.4s linear;
