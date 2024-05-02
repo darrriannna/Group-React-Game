@@ -1,29 +1,38 @@
+import React, { useState } from 'react';
 import styles from './LevelOne.module.css';
-import pauseButton from '../../assets/icons/Pause-icon.svg'
-import heart from '../../assets/icons/Heart-game-red.svg'
+import pauseButton from '../../assets/icons/Pause-icon.svg';
+import heart from '../../assets/icons/Heart-game-red.svg';
 import AlienMole from '../Alien/alienMole';
 import Hammer from '../hammer/hammer';
-import {useState} from 'react'
-
-
-
-
+import clickPause from '../../../public/music/buttonclick.wav'; 
 
 const LevelOne = () => {
-	
-	const [score, setScore] = useState(0)
+    const [score, setScore] = useState(0);
+    const [isPlaying, setIsPlaying] = useState(false);
 
-	const scoreIncrease = () => {
-		setScore(score + 10)
-		console.log(score);
-	}
+    const scoreIncrease = () => {
+        setScore(score + 10);
+    };
+
+    const handleClick = () => {
+        if (!isPlaying) {
+            const audio = new Audio(clickPause);
+            audio.play();
+            setIsPlaying(true);
+            audio.addEventListener('ended', () => {
+                setIsPlaying(false);
+            });
+        }
+
+    };
+
     return (
         <>
             <div className={`${styles.levelContainer}`}>
                 <div className={styles.topContainer}>
                     <div className={styles.miniContainer1}>
                         <div className={styles.svg}>
-                            <img src={pauseButton} alt="Pause" />
+                            <img src={pauseButton} alt="Pause" onClick={handleClick} />
                         </div>
                         <p className={styles.gameText}>Player 1</p>
                     </div>
@@ -46,7 +55,7 @@ const LevelOne = () => {
             </div>
             <Hammer />
         </>
-    )
+    );
 }
 
 export default LevelOne;
