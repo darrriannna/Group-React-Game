@@ -1,3 +1,4 @@
+
 export default function MainButton({name}){
 	const btnClass = 'btn'
 	let btnName = ''
