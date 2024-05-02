@@ -2,6 +2,7 @@ import styles from './LevelOne.module.css';
 import pauseButton from '../../assets/icons/Pause-icon.svg'
 import heart from '../../assets/icons/Heart-game-red.svg'
 import AlienMole from '../Alien/alienMole';
+import Hammer from '../hammer/hammer';
 import {useState} from 'react'
 
 
@@ -43,6 +44,7 @@ const LevelOne = () => {
                 <AlienMole alienId={styles.a6}  onAlienClick ={scoreIncrease}/>
                 <AlienMole alienId={styles.a7}  onAlienClick ={scoreIncrease}/>
             </div>
+            <Hammer />
         </>
     )
 }

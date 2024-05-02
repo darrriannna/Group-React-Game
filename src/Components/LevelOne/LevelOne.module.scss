@@ -10,6 +10,7 @@
    display: flex;
    justify-content: space-between;
    position: relative;
+   cursor: none;
 
    .svg{
     margin: 0;
@@ -72,7 +73,6 @@ html{
     width: 120px;
     height: 120px;
     position: absolute;
-    cursor: pointer;
 	filter: drop-shadow(2px 4px 6px black);
 }
 .punched{
