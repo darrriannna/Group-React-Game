@@ -1,5 +1,5 @@
 .sky-background{
-	background: url('./images/background-nightsky.png') 0 0 / cover no-repeat;
+	background: url('../../assets/images/background-nightsky.png') 0 0 / cover no-repeat;
 }
 .logo{
 	height: 500px !important;
