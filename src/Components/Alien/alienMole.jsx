@@ -24,6 +24,7 @@ const AlienMole = ({ alienId, onAlienClick }) => {
         return Math.floor(Math.random() * (max - min + 1) + min);
     };
 
+
     return (
         <img
             className={`${styles.alien} ${alienId} ${
