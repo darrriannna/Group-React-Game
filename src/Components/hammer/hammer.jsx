@@ -57,14 +57,14 @@ const Hammer = () => {
     // Memoize the hammer image element to prevent unnecessary re-renders
     if (!hammerImageRef.current) {
         hammerImageRef.current = (
-            <img src={hammer} alt="hammer" />
+            <img  src={hammer} alt="hammer" />
         );
     }
 
     return (
         <div ref={cursorRef} className={hammercss.cursor}>
             <div ref={clickRef} className={hammercss.hammerContainer}>
-                {hammerImageRef.current}
+           {hammerImageRef.current}
             </div>
         </div>
     );
