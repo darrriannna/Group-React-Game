@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import styles from './LevelOne.module.css';
 import pauseButton from '../../assets/icons/Pause-icon.svg';
 import heart from '../../assets/icons/Heart-game-red.svg';
