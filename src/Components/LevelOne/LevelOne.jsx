@@ -9,10 +9,14 @@ import clickPause from '../../../public/music/buttonclick.wav';
 const LevelOne = () => {
     const [score, setScore] = useState(0);
     const [isPlaying, setIsPlaying] = useState(false);
-
+	 const [hearts, setHearts] = useState(3)
     const scoreIncrease = () => {
         setScore(score + 10);
     };
+
+	 const bombClick = () =>{
+		setHearts(hearts -1)
+	 }
 
     const handleClick = () => {
         if (!isPlaying) {
@@ -39,20 +43,20 @@ const LevelOne = () => {
                     </div>
                     <div className={styles.miniContainer2}>
                         <div className='hearts'>
-                            <img src={heart} alt="Heart" />
-                            <img src={heart} alt="Heart" />
-                            <img src={heart} alt="Heart" />
+									{Array.from({length: hearts}, (_, index) =>(
+										<img key={index} src={heart} alt= 'Heart'/>
+									))}
                         </div>
                         <p className={styles.gameText}>Score: {score}</p>
                     </div>
                 </div>
-                <AlienMole  alienId={styles.a1} onAlienClick ={scoreIncrease}/>
-                <AlienMole alienId={styles.a2}  onAlienClick ={scoreIncrease}/>
-                <AlienMole alienId={styles.a3}  onAlienClick ={scoreIncrease}/>
-                <AlienMole alienId={styles.a4}  onAlienClick ={scoreIncrease}/>
-                <AlienMole alienId={styles.a5}  onAlienClick ={scoreIncrease}/>
-                <AlienMole alienId={styles.a6}  onAlienClick ={scoreIncrease}/>
-                <AlienMole alienId={styles.a7}  onAlienClick ={scoreIncrease}/>
+                <AlienMole  alienId={styles.a1} onAlienClick ={scoreIncrease} onBombClick={bombClick}/>
+                <AlienMole alienId={styles.a2}  onAlienClick ={scoreIncrease} onBombClick={bombClick}/>
+                <AlienMole alienId={styles.a3}  onAlienClick ={scoreIncrease} onBombClick={bombClick}/>
+                <AlienMole alienId={styles.a4}  onAlienClick ={scoreIncrease} onBombClick={bombClick}/>
+                <AlienMole alienId={styles.a5}  onAlienClick ={scoreIncrease} onBombClick={bombClick}/>
+                <AlienMole alienId={styles.a6}  onAlienClick ={scoreIncrease} onBombClick={bombClick}/>
+                <AlienMole alienId={styles.a7}  onAlienClick ={scoreIncrease} onBombClick={bombClick}/>
             </div>
             <Hammer />
         </>

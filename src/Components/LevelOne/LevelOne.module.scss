@@ -11,7 +11,7 @@
    justify-content: space-between;
    position: relative;
    cursor: none;
-   
+	overflow: hidden;
 
    .svg{
     margin: 0;
@@ -68,7 +68,7 @@ html{
 .alien{
     z-index: 2;
     width: 180px;
-    height: 180px;
+    height: 200px;
     position: absolute;
 	filter: drop-shadow(2px 4px 6px black);
 }
@@ -108,11 +108,11 @@ html{
 	 transform: rotate(3deg);
 }
 .a6{
-    bottom: 267px;
+    bottom: 263px;
     left: 44.5%;
 }
 .a7{
-    bottom: 79px;
+    bottom: 75px;
     left: 44.5%;
     
 }
