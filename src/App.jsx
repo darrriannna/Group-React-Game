@@ -12,7 +12,7 @@ function App() {
     <Router>
 		  <div className="container sky-background">
 			<Routes>
-				<Route path='levelone' element={<LevelOne />} />
+				<Route path='/levelone' element={<LevelOne />} />
 				<Route path='/' element={<Root />} />
 			</Routes>
 				<SoundButton startMusic={startMusic}></SoundButton>

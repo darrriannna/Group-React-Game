@@ -1,38 +1,60 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styles from './LevelOne.module.css';
 import pauseButton from '../../assets/icons/Pause-icon.svg';
 import heart from '../../assets/icons/Heart-game-red.svg';
+import grayHeart from '../../assets/icons/Heart-game-gray.svg'
 import AlienMole from '../Alien/alienMole';
 import Hammer from '../hammer/hammer';
 import clickPause from '../../../public/music/buttonclick.wav'; 
+import explosionSound from '../../../public/music/bomb-explosion.mp3'
+import GameOverPage from '../gameOver/gameOverPage';
 
 const LevelOne = () => {
-    const [score, setScore] = useState(0);
-    const [isPlaying, setIsPlaying] = useState(false);
-	 const [hearts, setHearts] = useState(3)
-    const scoreIncrease = () => {
-        setScore(score + 10);
-    };
+	const [score, setScore] = useState(0);
+	const [isPlaying, setIsPlaying] = useState(false);
+	const [hearts, setHearts] = useState(3)
+	const [gameOver, setGameOver] = useState(false)
+	
+	const scoreIncrease = () => {
+		setScore(score + 10);
+	};
+	
+	const bombClick = () =>{
+		audioExplosion.play()
+		if (hearts > 0) {
+			setHearts(hearts -1)
+			// need to add more effects of explosion
 
-	 const bombClick = () =>{
-		setHearts(hearts -1)
-	 }
+		}
+	}
 
+
+	const audioClick = new Audio(clickPause);
+	const audioExplosion = new Audio(explosionSound)
+	
     const handleClick = () => {
         if (!isPlaying) {
-            const audio = new Audio(clickPause);
-            audio.play();
+            audioClick.play();
             setIsPlaying(true);
-            audio.addEventListener('ended', () => {
+            audioClick.addEventListener('ended', () => {
                 setIsPlaying(false);
             });
         }
 
     };
 
+	useEffect(() =>{
+		if (hearts === 0) {
+			setGameOver(true)
+		}
+	},[hearts])
 
     return (
         <>
+		  {
+			gameOver ? (
+				<GameOverPage score = {score}/>
+			) :(
             <div className={`${styles.levelContainer}`}>
                 <div className={styles.topContainer}>
                     <div className={styles.miniContainer1}>
@@ -43,8 +65,11 @@ const LevelOne = () => {
                     </div>
                     <div className={styles.miniContainer2}>
                         <div className='hearts'>
-									{Array.from({length: hearts}, (_, index) =>(
-										<img key={index} src={heart} alt= 'Heart'/>
+									{Array.from({length: 3}, (_, index) =>(
+										<img 
+										key={index} 
+										src={index < hearts ? heart : grayHeart} 
+										alt= 'Heart'/>
 									))}
                         </div>
                         <p className={styles.gameText}>Score: {score}</p>
@@ -58,6 +83,8 @@ const LevelOne = () => {
                 <AlienMole alienId={styles.a6}  onAlienClick ={scoreIncrease} onBombClick={bombClick}/>
                 <AlienMole alienId={styles.a7}  onAlienClick ={scoreIncrease} onBombClick={bombClick}/>
             </div>
+			)
+		  }
             <Hammer />
         </>
     );
