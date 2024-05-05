@@ -2,7 +2,8 @@
 import styles from "./loosingPage.module.css";
 import goBackMenu from "../../assets/icons/Go-back-menu.svg";
 import astronautFlying from "../../assets/images/austronaut-levitating.svg";
-import { useState } from "react";
+import strongAlien from "../../assets/images/Strong-alien-moon.svg";
+// import { useState } from "react";
 
 const LoosingPage = () => {
   return (
@@ -19,11 +20,15 @@ const LoosingPage = () => {
       </div>
 
       <div className={styles.middleDiv}>
+        <p className={styles.loosingPageScore}>Your Score: 300</p>
+
         <div className={styles.flyingAstronaut}>
           <img src={astronautFlying} alt="flying astronaut" />
         </div>
+      </div>
 
-        <p className={styles.loosingPageScore}>Your Score: {score}</p>
+      <div className={styles.strongAlien}>
+        <img src={strongAlien} alt="Picture of Strong alien on moon" />
       </div>
     </div>
   );
