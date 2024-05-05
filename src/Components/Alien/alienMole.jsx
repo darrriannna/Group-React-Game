@@ -4,7 +4,7 @@ import alien from '../../assets/images/alien-play-game.svg';
 import bomb from '../../assets/images/Bomb-gameplay.svg';
 import React, { useState, useEffect, useCallback } from 'react';
 
-const AlienMole = ({ alienId, onAlienClick }) => {
+const AlienMole = ({ alienId, onAlienClick, onBombClick }) => {
     const [isVisible, setIsVisible] = useState(false);
     const [isAlien, setIsAlien] = useState(true); // State to track whether to render alien or bomb
 
@@ -12,10 +12,11 @@ const AlienMole = ({ alienId, onAlienClick }) => {
         setIsVisible(false);
         if (!isAlien) {
             console.log("Boom!");
+				onBombClick()
         } else {
             onAlienClick();
         }
-    }, [onAlienClick, isAlien]);
+    }, [onAlienClick, isAlien, onBombClick]);
 
     useEffect(() => {
         const timer = setTimeout(() => {
