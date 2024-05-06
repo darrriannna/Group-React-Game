@@ -143,3 +143,22 @@ html{
     }
 }
 
+.explosion {
+width: 100%;
+height: 100%;
+z-index: 5;
+margin: auto 0;
+position: absolute;
+animation-duration: 0.7s;
+}
+
+@keyframes explode {
+    from {
+        transform: scale(0);
+    }
+    to {
+        transform: scale(1.5);
+    }
+}
+
+
