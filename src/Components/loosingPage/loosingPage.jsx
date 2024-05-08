@@ -21,6 +21,7 @@ const LoosingPage = () => {
 
       <div className={styles.middleDiv}>
         <p className={styles.loosingPageScore}>Your Score: 300</p>
+        {/* {score}  have to fix to see real score*/}
 
         <div className={styles.flyingAstronaut}>
           <img src={astronautFlying} alt="flying astronaut" />
