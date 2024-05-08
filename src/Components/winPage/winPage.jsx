@@ -25,7 +25,7 @@ const LoosingPage = () => {
         <div className={styles.alienOnMars}>
           <img src={alienMars} alt="alien sitting on mars" />
         </div>
-        <p className={styles.winPageScore}>Your Score: 300</p>
+        <p className={styles.winPageScore}>Your Score: 300 </p>
         {/* {score}  have to fix to see real score*/}
       </div>
 
