@@ -59,12 +59,13 @@ button {
 .read-the-docs {
   color: #888;
 }
+ loosingPage
 .container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  height: 100vh;
   width: 100%;
 }
 .music-button {
@@ -74,3 +75,19 @@ button {
   height: 100px;
   width: 100px;
 }
+.container{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	width: 100%;
+} 
+.music-button{
+	position: absolute;
+	left: 20px;
+	bottom: 20px;
+	height: 100px;
+	width: 100px;
+}
+

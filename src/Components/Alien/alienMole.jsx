@@ -1,79 +1,62 @@
-import styles from '../LevelOne/LevelOne.module.css'
-import alien from '../../assets/images/alien-play-game.svg'
-import { useState, useEffect } from 'react';
+/* eslint-disable react/prop-types */
+import styles from '../LevelOne/LevelOne.module.css';
+import alien from '../../assets/images/alien-play-game.svg';
+import bomb from '../../assets/images/Bomb-gameplay.svg';
+import React, { useState, useEffect, useCallback } from 'react';
 
+const AlienMole = ({ alienId, onAlienClick, onBombClick }) => {
+    const [isVisible, setIsVisible] = useState(false);
+    const [isAlien, setIsAlien] = useState(true); // State to track whether to render alien or bomb
 
+    const handleAlienClick = useCallback(() => {
+        setIsVisible(false);
+        if (!isAlien) {
+            console.log("Boom!");
+				onBombClick()
+        } else {
+            onAlienClick();
+        }
+    }, [onAlienClick, isAlien, onBombClick]);
 
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            const randomValue = Math.random();
+            if (randomValue < 0.7) {
+                setIsVisible(isVisible => !isVisible); // Toggle visibility
+                setIsAlien(true); // Render alien
+            } else {
+                setIsVisible(true); // Show the bomb
+                setIsAlien(false); // Render bomb
+                // Set a delay before switching back to alien
+                setTimeout(() => {
+                    setIsVisible(false);
+                    setIsAlien(true); // Reset to render alien next time
+                }, 5000); // Set a short delay before switching back to alien
+                // Set a timer to hide the bomb after a certain delay
+                setTimeout(() => {
+                    setIsVisible(false);
+                }, getRandomDelay(1000, 3000)); // Set a short delay for bomb disappearance
+            }
+        }, getRandomDelay(3000, 8000)); // Delay for appearance and disappearance
 
+        return () => clearTimeout(timer);
+    }, [isVisible, isAlien]); // Update useEffect dependencies
 
-// eslint-disable-next-line react/prop-types
-const AlienMole = ({ alienId, onAlienClick }) => {
+    const getRandomDelay = (min, max) => {
+        return Math.floor(Math.random() * (max - min + 1) + min);
+    };
 
-  const [isHidden, setIsHidden] = useState(true);
-  const [isClicked, setIsClicked] = useState(false);  //Alien hidden in the beginning
-  const [appearTimer, setAppearTimer] = useState(null)
-  const [disappearTimer, setDisappearTimer] = useState(null)
-  
-  const handleClick = function () {
-    setIsClicked(true)
-	  setIsHidden(false)
-	clearTimeout(appearTimer)
-	clearTimeout(disappearTimer)
-	 
-    setTimeout(() => {
-		 setIsHidden(true)
-		 if (!isClicked) {
-			 scheduleNextAppearance();
-			 setTimeout(() => {
-				 setIsClicked(false)
-			 }, 300);
-			} else{
-				setTimeout(() => {
-					setIsClicked(false)
-				}, 300);
-				// scheduleNextAppearance();
-			}
-		}, 1000);
-		onAlienClick()
-  }
+    return (
+        <img
+            className={`${styles.alien} ${alienId} ${
+                isVisible ? styles.appear : styles.disappear
+            }`}
+            src={isAlien ? alien : bomb} // Render either alien or bomb based on state
+            alt={isAlien ? "alien" : "bomb"} // Set alt text accordingly
+            onClick={handleAlienClick}
+        />
+    );
+};
 
-  useEffect(() => {	
-//start timers after creating components
-    scheduleNextAppearance()
-
-
-    return () => clearTimeout(appearTimer, disappearTimer);
-  }, []);
-
-
-  const scheduleNextAppearance = () => {
-	
-	//first timer for make them visible
-	if(isHidden) {
-
-		const appearTimer = setTimeout(() => {	
-			//Aliens are visible   
-			setIsHidden(false);
-			
-			//second timer to make them hidden
-			const disappearTimer = setTimeout(() => {
-					setIsHidden(true);
-					
-					scheduleNextAppearance();
-				}, getRandomDelay(5000, 3000)); // Between 3000ms and 5000ms
-				setAppearTimer(appearTimer)
-		}, getRandomDelay(8000, 3000)); // Between 5000ms and 8000ms
-		setDisappearTimer(disappearTimer)
-		};
-	}
-
-  const getRandomDelay = (max, min) => {
-    return Math.floor(Math.random() * (max - min + 1) + min);
-  }
-
-  return (
-    <img className={`${styles.alien} ${alienId} ${isHidden ? styles.disappear : styles.appear} ${isClicked ? styles.punched : ''}`} src={alien} alt='alien' onClick={handleClick} />
-  )
-}
-
-export default AlienMole;
+const MemoizedAlienMole = React.memo(AlienMole);
+export default MemoizedAlienMole;
