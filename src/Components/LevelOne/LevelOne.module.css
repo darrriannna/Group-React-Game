@@ -212,14 +212,30 @@ html {
   z-index: 5;
   margin: auto 0;
   position: absolute;
-  -webkit-animation-duration: 0.7s;
-          animation-duration: 0.7s;
+}
+
+.center {
+  z-index: 5;
+  margin: auto;
+}
+
+.visible {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
+
+.music-button.boom {
+  -webkit-animation: explode 0.5s ease-out forwards;
+          animation: explode 0.5s ease-out forwards;
 }
 
 @-webkit-keyframes explode {
   from {
-    -webkit-transform: scale(0);
-            transform: scale(0);
+    -webkit-transform: scale(0.1);
+            transform: scale(0.1);
   }
   to {
     -webkit-transform: scale(1.5);
@@ -229,8 +245,8 @@ html {
 
 @keyframes explode {
   from {
-    -webkit-transform: scale(0);
-            transform: scale(0);
+    -webkit-transform: scale(0.1);
+            transform: scale(0.1);
   }
   to {
     -webkit-transform: scale(1.5);
