@@ -20,7 +20,6 @@ html {
   height: 100vh;
   box-sizing: border-box;
   overflow: hidden;
-  /* take away overflow and see full moon and scroll bar */
 }
 
 .topDiv {
@@ -44,7 +43,9 @@ html {
 }
 
 .loosingInfo h1 {
-  font-size: 50px;
+  font-size: 70px;
+  color: red;
+  animation: animate 1.5s linear infinite;
 }
 
 .loosingPageScore {
