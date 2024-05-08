@@ -2,7 +2,7 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  // BrowserRouter,
+  //BrowserRouter,
 } from "react-router-dom";
 import "./Components/style/images.css";
 import "./Components/style/buttons.css";

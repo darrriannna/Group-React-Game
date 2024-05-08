@@ -40,12 +40,12 @@ html {
   top: 40px;
   height: 100px;
   width: 100px;
+  cursor: pointer;
 }
 
 .loosingInfo h1 {
   font-size: 70px;
   color: red;
-  animation: animate 1.5s linear infinite;
 }
 
 .loosingPageScore {

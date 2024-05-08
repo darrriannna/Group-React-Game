@@ -16,7 +16,6 @@ const LevelOne = () => {
   const [score, setScore] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [hearts, setHearts] = useState(3);
-  //const [gameOver, setGameOver] = useState(false);
   const [gameOver, setGameOver] = useState(false);
   const [showExplosion, setShowExplosion] = useState(false); // State to control the visibility of the explosion SVG
   const [paused, setPaused] = useState(false);
