@@ -15,13 +15,14 @@ import TimerComponent from '../Timer/timerComponent';
 const LevelOne = () => {
     const [score, setScore] = useState(0);
     const [isPlaying, setIsPlaying] = useState(false);
+    const [isRunning, setIsRunning] = useState(true);
     const [hearts, setHearts] = useState(3);
     const [gameOver, setGameOver] = useState(false);
     const [showExplosion, setShowExplosion] = useState(false); // State to control the visibility of the explosion SVG
     const [paused, setPaused] = useState(false)
+    const [countdownTime, setCountdownTime] = useState(Date.now() + 120000);
 
-   
-
+    console.log("IS RUNNING: ", isRunning)
     const scoreIncrease = () => {
         setScore(score + 10);
     };
@@ -52,15 +53,34 @@ const LevelOne = () => {
 
     const setPause = () => {
         setPaused(true)
+        setIsRunning(false)
     }
     const continueGame = () => {
         setPaused(false)
+        setIsRunning(true)
     }
     useEffect(() => {
         if (hearts === 0) {
             setGameOver(true)
         }
     }, [hearts])
+
+    useEffect(() => {
+        let timerId;
+    
+        if (isRunning) {
+            // Calculate remaining time based on original countdown time and elapsed time
+            const remainingTime = countdownTime - Date.now();
+    
+            // Start the countdown timer
+            timerId = setTimeout(() => {
+                setCountdownTime(Date.now() + remainingTime); // Update countdown time based on remaining time
+            }, remainingTime);
+        }
+    
+        // Clear the timer when component unmounts or when game ends
+        return () => clearTimeout(timerId);
+    }, [countdownTime, isRunning]);
 
     return (
         <>
@@ -106,7 +126,7 @@ const LevelOne = () => {
                     <div className={`${styles.center} ${paused ? styles.visible : styles.hidden}`} onClick={continueGame}>
                         <MainButton name="Play" />
                     </div>
-                    <TimerComponent />
+                    <TimerComponent isRunning={isRunning} countdownTime={countdownTime}/>
                 </div>
             )}
             <Hammer />

@@ -1,6 +1,7 @@
 import Countdown from 'react-countdown';
 import styles from '../LevelOne/LevelOne.module.css'
-const TimerComponent = () => {
+// eslint-disable-next-line react/prop-types
+const TimerComponent = ({ countdownTime, isRunning }) => {
 
     const renderer = ({ minutes, seconds, completed}) => {
 
@@ -18,7 +19,7 @@ const TimerComponent = () => {
 
     return (
         <div className={styles.bottomContainer}>
-        <Countdown zeroPadTime={2} date={Date.now() + 120000} renderer={renderer} />
+         {isRunning && <Countdown date={countdownTime} renderer={renderer} />}
      </div>
     )
 }
