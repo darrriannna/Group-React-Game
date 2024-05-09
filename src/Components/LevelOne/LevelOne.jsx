@@ -5,11 +5,12 @@ import heart from '../../assets/icons/Heart-game-red.svg';
 import grayHeart from '../../assets/icons/Heart-game-gray.svg'
 import AlienMole from '../Alien/alienMole';
 import Hammer from '../hammer/hammer';
-import clickPause from '../../../public/music/buttonclick.wav'; 
+import clickPause from '../../../public/music/buttonclick.wav';
 import explosionSound from '../../../public/music/bomb-explosion.mp3'
 import GameOverPage from '../gameOver/gameOverPage';
 import ExplosionSVG from '../../assets/images/explosion-boom.svg'; // Import the explosion SVG
 import MainButton from '../mainButton/mainButton'
+import TimerComponent from '../Timer/timerComponent';
 
 const LevelOne = () => {
     const [score, setScore] = useState(0);
@@ -17,16 +18,18 @@ const LevelOne = () => {
     const [hearts, setHearts] = useState(3);
     const [gameOver, setGameOver] = useState(false);
     const [showExplosion, setShowExplosion] = useState(false); // State to control the visibility of the explosion SVG
-	 const [paused, setPaused] = useState(false)
+    const [paused, setPaused] = useState(false)
+
+   
 
     const scoreIncrease = () => {
         setScore(score + 10);
     };
-    
-    const bombClick = () =>{
+
+    const bombClick = () => {
         audioExplosion.play();
         if (hearts > 0) {
-            setHearts(hearts -1);
+            setHearts(hearts - 1);
             setShowExplosion(true); // Show explosion SVG
             setTimeout(() => {
                 setShowExplosion(false); // Hide explosion SVG after 3 seconds
@@ -47,22 +50,22 @@ const LevelOne = () => {
         }
     };
 
- 	const setPause = () => {
-		setPaused(true)
-	}
-	const continueGame = () => {
-		setPaused(false)
-	}
-  useEffect(() =>{
-		if (hearts === 0) {
-			setGameOver(true)
-		}
-	},[hearts])
+    const setPause = () => {
+        setPaused(true)
+    }
+    const continueGame = () => {
+        setPaused(false)
+    }
+    useEffect(() => {
+        if (hearts === 0) {
+            setGameOver(true)
+        }
+    }, [hearts])
 
     return (
         <>
             {gameOver ? (
-                <GameOverPage score = {score}/>
+                <GameOverPage score={score} />
             ) : (
                 <div className={`${styles.levelContainer}`}>
                     <div className={styles.topContainer}>
@@ -74,37 +77,40 @@ const LevelOne = () => {
                         </div>
                         <div className={styles.miniContainer2}>
                             <div className='hearts'>
-                                {Array.from({length: 3}, (_, index) =>(
-                                    <img 
-                                    key={index} 
-                                    src={index < hearts ? heart : grayHeart} 
-                                    alt= 'Heart'/>
+                                {Array.from({ length: 3 }, (_, index) => (
+                                    <img
+                                        key={index}
+                                        src={index < hearts ? heart : grayHeart}
+                                        alt='Heart' />
                                 ))}
                             </div>
                             <p className={styles.gameText}>Score: {score}</p>
+
                         </div>
                     </div>
-						{
-							!paused && (
-								<>
-							<AlienMole  alienId={styles.a1} onAlienClick ={scoreIncrease} onBombClick={bombClick}/>
-							{showExplosion && <img src={ExplosionSVG} className={`${styles.explosion} ${showExplosion && styles.boom}`}/>}
-							<AlienMole alienId={styles.a2}  onAlienClick ={scoreIncrease} onBombClick={bombClick}/>
-							<AlienMole alienId={styles.a3}  onAlienClick ={scoreIncrease} onBombClick={bombClick}/>
-							<AlienMole alienId={styles.a4}  onAlienClick ={scoreIncrease} onBombClick={bombClick}/>
-							<AlienMole alienId={styles.a5}  onAlienClick ={scoreIncrease} onBombClick={bombClick}/>
-							<AlienMole alienId={styles.a6}  onAlienClick ={scoreIncrease} onBombClick={bombClick}/>
-							<AlienMole alienId={styles.a7}  onAlienClick ={scoreIncrease} onBombClick={bombClick}/>
-							
-							</>
-							)		
-						}				  
-						 <div className={`${styles.center} ${paused ? styles.visible : styles.hidden}`}onClick={continueGame}>
-						 <MainButton name = "Play"/>
-						</div>
+                    {
+                        !paused && (
+                            <>
+                                <AlienMole alienId={styles.a1} onAlienClick={scoreIncrease} onBombClick={bombClick} />
+                                {showExplosion && <img src={ExplosionSVG} className={`${styles.explosion} ${showExplosion && styles.boom}`} />}
+                                <AlienMole alienId={styles.a2} onAlienClick={scoreIncrease} onBombClick={bombClick} />
+                                <AlienMole alienId={styles.a3} onAlienClick={scoreIncrease} onBombClick={bombClick} />
+                                <AlienMole alienId={styles.a4} onAlienClick={scoreIncrease} onBombClick={bombClick} />
+                                <AlienMole alienId={styles.a5} onAlienClick={scoreIncrease} onBombClick={bombClick} />
+                                <AlienMole alienId={styles.a6} onAlienClick={scoreIncrease} onBombClick={bombClick} />
+                                <AlienMole alienId={styles.a7} onAlienClick={scoreIncrease} onBombClick={bombClick} />
+
+                            </>
+                        )
+                    }
+                    <div className={`${styles.center} ${paused ? styles.visible : styles.hidden}`} onClick={continueGame}>
+                        <MainButton name="Play" />
+                    </div>
+                    <TimerComponent />
                 </div>
             )}
             <Hammer />
+
         </>
     );
 }
