@@ -79,6 +79,7 @@
 //     </div>
 //   );
 // }
+
 import { useEffect, useState } from "react";
 import styles from "./loosingPage.module.css";
 import goBackMenu from "../../assets/icons/Go-back-menu.svg";
@@ -102,7 +103,6 @@ export default function LoosingPage({ score }) {
     // Function to handle going back to LevelOne page
     window.location.href = "/levelOne";
     setShowLevelOne(true);
-    t;
   };
 
   return (
