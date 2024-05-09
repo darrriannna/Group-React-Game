@@ -9,6 +9,7 @@ import clickPause from "../../../public/music/buttonclick.wav";
 import explosionSound from "../../../public/music/bomb-explosion.mp3";
 //import GameOverPage from "../gameOver/gameOverPage";
 import LoosingPage from "../loosingPage/loosingPage";
+import WinPage from "../winPage/winPage";
 import ExplosionSVG from "../../assets/images/explosion-boom.svg"; // Import the explosion SVG
 import MainButton from "../mainButton/mainButton";
 
@@ -19,6 +20,7 @@ const LevelOne = () => {
   const [gameOver, setGameOver] = useState(false);
   const [showExplosion, setShowExplosion] = useState(false); // State to control the visibility of the explosion SVG
   const [paused, setPaused] = useState(false);
+  const [showWinPage, setShowWinPage] = useState(false);
 
   const scoreIncrease = () => {
     setScore(score + 10);
@@ -54,94 +56,105 @@ const LevelOne = () => {
   const continueGame = () => {
     setPaused(false);
   };
+
   useEffect(() => {
     if (hearts === 0) {
       setGameOver(true);
     }
-  }, [hearts]);
+    if (score >= 200) {
+      // eslint-disable-next-line no-undef
+      setShowWinPage(true);
+    }
+  }, [hearts, score]);
 
   return (
     <>
       {gameOver ? (
         <LoosingPage score={score} />
       ) : (
-        <div className={`${styles.levelContainer}`}>
-          <div className={styles.topContainer}>
-            <div className={styles.miniContainer1}>
-              <button className={styles.svg} onClick={setPause}>
-                <img src={pauseButton} alt="Pause" onClick={handleClick} />
-              </button>
-              <p className={styles.gameText}>Player 1</p>
-            </div>
-            <div className={styles.miniContainer2}>
-              <div className="hearts">
-                {Array.from({ length: 3 }, (_, index) => (
-                  <img
-                    key={index}
-                    src={index < hearts ? heart : grayHeart}
-                    alt="Heart"
-                  />
-                ))}
+        <>
+          {showWinPage ? (
+            <WinPage score={score} />
+          ) : (
+            <div className={`${styles.levelContainer}`}>
+              <div className={styles.topContainer}>
+                <div className={styles.miniContainer1}>
+                  <button className={styles.svg} onClick={setPause}>
+                    <img src={pauseButton} alt="Pause" onClick={handleClick} />
+                  </button>
+                  <p className={styles.gameText}>Player 1</p>
+                </div>
+                <div className={styles.miniContainer2}>
+                  <div className="hearts">
+                    {Array.from({ length: 3 }, (_, index) => (
+                      <img
+                        key={index}
+                        src={index < hearts ? heart : grayHeart}
+                        alt="Heart"
+                      />
+                    ))}
+                  </div>
+                  <p className={styles.gameText}>Score: {score}</p>
+                </div>
               </div>
-              <p className={styles.gameText}>Score: {score}</p>
-            </div>
-          </div>
-          {!paused && (
-            <>
-              <AlienMole
-                alienId={styles.a1}
-                onAlienClick={scoreIncrease}
-                onBombClick={bombClick}
-              />
-              {showExplosion && (
-                <img
-                  src={ExplosionSVG}
-                  className={`${styles.explosion} ${
-                    showExplosion && styles.boom
-                  }`}
-                />
+              {!paused && (
+                <>
+                  <AlienMole
+                    alienId={styles.a1}
+                    onAlienClick={scoreIncrease}
+                    onBombClick={bombClick}
+                  />
+                  {showExplosion && (
+                    <img
+                      src={ExplosionSVG}
+                      className={`${styles.explosion} ${
+                        showExplosion && styles.boom
+                      }`}
+                    />
+                  )}
+                  <AlienMole
+                    alienId={styles.a2}
+                    onAlienClick={scoreIncrease}
+                    onBombClick={bombClick}
+                  />
+                  <AlienMole
+                    alienId={styles.a3}
+                    onAlienClick={scoreIncrease}
+                    onBombClick={bombClick}
+                  />
+                  <AlienMole
+                    alienId={styles.a4}
+                    onAlienClick={scoreIncrease}
+                    onBombClick={bombClick}
+                  />
+                  <AlienMole
+                    alienId={styles.a5}
+                    onAlienClick={scoreIncrease}
+                    onBombClick={bombClick}
+                  />
+                  <AlienMole
+                    alienId={styles.a6}
+                    onAlienClick={scoreIncrease}
+                    onBombClick={bombClick}
+                  />
+                  <AlienMole
+                    alienId={styles.a7}
+                    onAlienClick={scoreIncrease}
+                    onBombClick={bombClick}
+                  />
+                </>
               )}
-              <AlienMole
-                alienId={styles.a2}
-                onAlienClick={scoreIncrease}
-                onBombClick={bombClick}
-              />
-              <AlienMole
-                alienId={styles.a3}
-                onAlienClick={scoreIncrease}
-                onBombClick={bombClick}
-              />
-              <AlienMole
-                alienId={styles.a4}
-                onAlienClick={scoreIncrease}
-                onBombClick={bombClick}
-              />
-              <AlienMole
-                alienId={styles.a5}
-                onAlienClick={scoreIncrease}
-                onBombClick={bombClick}
-              />
-              <AlienMole
-                alienId={styles.a6}
-                onAlienClick={scoreIncrease}
-                onBombClick={bombClick}
-              />
-              <AlienMole
-                alienId={styles.a7}
-                onAlienClick={scoreIncrease}
-                onBombClick={bombClick}
-              />
-            </>
+              <div
+                className={`${styles.center} ${
+                  paused ? styles.visible : styles.hidden
+                }`}
+                onClick={continueGame}
+              >
+                <MainButton name="Play" />
+              </div>
+            </div>
           )}
-          <div
-            className={`${styles.center} ${
-              paused ? styles.visible : styles.hidden
-            }`}
-            onClick={continueGame}
-          >
-            <MainButton name="Play" />
-          </div>
-        </div>
+        </>
       )}
       <Hammer />
     </>
