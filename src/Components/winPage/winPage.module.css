@@ -24,6 +24,10 @@ winInfo h2 {
   margin-top: 50px;
   width: 40%;
 }
+.winScore {
+  color: red;
+  font-size: 50px;
+}
 
 .goBack {
   position: absolute;
