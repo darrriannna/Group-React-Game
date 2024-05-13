@@ -11,7 +11,7 @@ import explosionSound from "../../../public/music/bomb-explosion.mp3";
 import ExplosionSVG from "../../assets/images/explosion-boom.svg"; // Import the explosion SVG
 import MainButton from "../mainButton/mainButton";
 import TimerComponent from "../Timer/timerComponent";
-import LoosingPage from "../loosingPage/loosingPage";
+import LosingPage from "../LosingPage/LosingPage";
 
 const LevelOne = () => {
   const [score, setScore] = useState(0);
@@ -86,7 +86,7 @@ const LevelOne = () => {
   return (
     <>
       {gameOver ? (
-        <LoosingPage score={score} />
+        <LosingPage score={score} />
       ) : (
         <div className={`${styles.levelContainer}`}>
           <div className={styles.topContainer}>
