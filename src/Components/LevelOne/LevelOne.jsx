@@ -7,7 +7,6 @@ import AlienMole from "../Alien/alienMole";
 import Hammer from "../hammer/hammer";
 import clickPause from "../../../public/music/buttonclick.wav";
 import explosionSound from "../../../public/music/bomb-explosion.mp3";
-//import GameOverPage from "../gameOver/gameOverPage";
 import ExplosionSVG from "../../assets/images/explosion-boom.svg"; // Import the explosion SVG
 import MainButton from "../mainButton/mainButton";
 import TimerComponent from "../Timer/timerComponent";
