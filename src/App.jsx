@@ -1,8 +1,7 @@
 import {
   BrowserRouter as Router,
   Routes,
-  Route,
-  BrowserRouter,
+  Route
 } from "react-router-dom";
 import "./Components/style/images.css";
 import "./Components/style/buttons.css";
