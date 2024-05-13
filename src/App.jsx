@@ -2,7 +2,7 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  //BrowserRouter,
+  BrowserRouter,
 } from "react-router-dom";
 import "./Components/style/images.css";
 import "./Components/style/buttons.css";
@@ -18,13 +18,15 @@ import WinPage from "./Components/winPage/winPage";
 function App() {
   return (
     <Router>
-      <Routes>
-        <Route path="levelone" element={<LevelOne />} />
-        <Route path="loosingPage" element={<LoosingPage />} />
-        <Route path="winPage" element={<WinPage />} />
-        <Route path="/" element={<Root />} />
-      </Routes>
-      <SoundButton startMusic={startMusic}></SoundButton>
+      <div className="container sky-background">
+        <Routes>
+          <Route path="levelone" element={<LevelOne />} />
+          <Route path="loosingPage" element={<LoosingPage />} />
+          <Route path="winPage" element={<WinPage />} />
+          <Route path="/" element={<Root />} />
+        </Routes>
+        <SoundButton startMusic={startMusic}></SoundButton>
+      </div>
     </Router>
   );
 }
