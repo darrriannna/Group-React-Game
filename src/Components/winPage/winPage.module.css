@@ -1,0 +1,56 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Montserrat:wght@700&display=swap");
+
+body {
+  font-family: Montserrat, sans-serif;
+  box-sizing: border-box;
+}
+
+winInfo h2 {
+  font-size: 30px;
+  word-spacing: 20px;
+}
+
+.winPageContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+.winMiddleContainer {
+  display: flex;
+  width: 100%;
+  height: 300px;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50px;
+}
+
+.winInfo {
+  text-align: center;
+}
+.winScore {
+  color: red;
+  font-size: 50px;
+}
+
+.goBack {
+  position: absolute;
+  left: 40px;
+  top: 40px;
+  height: 80px;
+  width: 80px;
+  cursor: pointer;
+}
+.astronautWon {
+  width: 100%;
+}
+
+.astronautWon img {
+  width: 100%;
+  height: auto;
+}
