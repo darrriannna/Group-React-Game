@@ -11,18 +11,27 @@ winInfo h2 {
 }
 
 .winPageContainer {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
 }
 .winMiddleContainer {
   display: flex;
+  width: 100%;
+  height: 300px;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50px;
 }
 
 .winInfo {
   text-align: center;
-  margin-top: 50px;
-  width: 40%;
 }
 .winScore {
   color: red;
@@ -38,7 +47,7 @@ winInfo h2 {
   cursor: pointer;
 }
 .astronautWon {
-  width: 60%;
+  width: 100%;
 }
 
 .astronautWon img {

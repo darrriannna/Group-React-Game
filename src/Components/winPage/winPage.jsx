@@ -15,7 +15,6 @@ const WinPage = ({ score }) => {
   const handleGoBack = () => {
     // Function to handle going back to LevelOne page
     window.location.href = "/levelOne";
-    // window.history.pushState({}, "", "/winPage");
   };
 
   return (
@@ -25,17 +24,18 @@ const WinPage = ({ score }) => {
       </div>
 
       <div className={styles.winMiddleContainer}>
-        <div className={styles.astronautWon}>
-          <img
-            src={astronautWon}
-            alt="Picture of astronaut with his hand up on moon"
-          />
-        </div>
         <div className={styles.winInfo}>
           <h1>Congratulations! You Won!!!</h1>
           <h2>Bye Bye Aliens! </h2>
           <h2 className={styles.winScore}>Your Score: {score}</h2>
         </div>
+      </div>
+
+      <div className={styles.astronautWon}>
+        <img
+          src={astronautWon}
+          alt="Picture of astronaut with his hand up on moon"
+        />
       </div>
     </div>
   );
