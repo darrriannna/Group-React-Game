@@ -10,9 +10,9 @@ function Paused({ continueGame }) {
             <div id="pause-panel" className="pause-panel">
                 <h2 className='pause-title'>Pause</h2>
 					 <p className='pause-text'>Do you want to continue the game?</p>
-					 <button onClick={continueGame}>
+					 <div onClick={continueGame}>
 				 		<MainButton name='Yes'/>
-					 </button>
+					 </div>
 					 <UseLink to={'/'}>
                	 <button className='quit-game-btn'>Exit game</button>
 					 </UseLink>
