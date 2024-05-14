@@ -10,7 +10,7 @@ import explosionSound from "../../../public/music/bomb-explosion.mp3";
 import ExplosionSVG from "../../assets/images/explosion-boom.svg"; // Import the explosion SVG
 import TimerComponent from "../Timer/timerComponent";
 import LosingPage from "../LosingPage/LosingPage";
-import Paused from "../pauseScreen/pauseScreen";
+import Paused from "../PauseScreen/pauseScreen";
 
 const LevelOne = () => {
   const [score, setScore] = useState(0);
