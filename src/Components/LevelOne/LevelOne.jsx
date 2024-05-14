@@ -57,7 +57,7 @@ const LevelOne = () => {
   };
   const continueGame = () => {
     setPaused(false);
-    setIsPlaying(true);
+	setIsRunning(true);
   };
   useEffect(() => {
     if (hearts === 0) {
@@ -159,9 +159,8 @@ const LevelOne = () => {
             className={`${styles.center} ${
               paused ? styles.visible : styles.hidden
             }`}
-				onClick={continueGame}
           >
-				<Paused />
+				<Paused continueGame={continueGame}/>
           </div>
           <TimerComponent isRunning={isRunning} countdownTime={countdownTime} />
         </div>
