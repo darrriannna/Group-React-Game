@@ -8,7 +8,6 @@ import Hammer from "../hammer/hammer";
 import clickPause from "../../../public/music/buttonclick.wav";
 import explosionSound from "../../../public/music/bomb-explosion.mp3";
 import ExplosionSVG from "../../assets/images/explosion-boom.svg"; // Import the explosion SVG
-import MainButton from "../mainButton/mainButton";
 import TimerComponent from "../Timer/timerComponent";
 import LosingPage from "../LosingPage/LosingPage";
 import Paused from "../pauseScreen/pauseScreen";
@@ -58,7 +57,7 @@ const LevelOne = () => {
   };
   const continueGame = () => {
     setPaused(false);
-    setIsRunning(true);
+    setIsPlaying(true);
   };
   useEffect(() => {
     if (hearts === 0) {
@@ -160,9 +159,9 @@ const LevelOne = () => {
             className={`${styles.center} ${
               paused ? styles.visible : styles.hidden
             }`}
-            onClick={continueGame}
+				onClick={continueGame}
           >
-           <Paused />
+				<Paused />
           </div>
           <TimerComponent isRunning={isRunning} countdownTime={countdownTime} />
         </div>

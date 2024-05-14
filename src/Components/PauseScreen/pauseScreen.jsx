@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import './pauseStyle.css';
 import MainButton from '../mainButton/mainButton';
+import UseLink from '../linksDelay/linksDelay';
 // main component
-function Paused () {
+function Paused ({runningGame}) {
     const [showPausePanel, setShowPausePanel] = useState(false)
+	
 
     // function to handle click event on the pause button
     const handlePauseClick = () => {
@@ -27,22 +29,23 @@ function Paused () {
 
     return (
         <div className="Paused">
-            <div id="pause-container">
+            {/* <div id="pause-container">
                 <img
                 src="pause-icon.svg"
                 alt="Pause"
                 className="pause-btn"
                 onClick={handlePauseClick}
                 />
-            </div>
+            </div> */}
 
         {setShowPausePanel && (
             <div id="pause-panel" className="pause-panel">
                 <h2 className='pause-title'>Pause</h2>
 					 <p className='pause-text'>Do you want to continue the game?</p>
-                <MainButton name='Yes'/>
-                {/* <button onClick={handleSettingsClick}>Settings</button> */}
-                <button className='quit-game-btn' onClick={handleQuitClick}>Exit game</button>
+                <MainButton name='Yes' onClick={runningGame}/>
+					 <UseLink to={'/'}>
+               	 <button className='quit-game-btn'>Exit game</button>
+					 </UseLink>
             </div>
         )}
         </div>
