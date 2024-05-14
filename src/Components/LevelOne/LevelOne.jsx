@@ -11,6 +11,7 @@ import ExplosionSVG from "../../assets/images/explosion-boom.svg"; // Import the
 import MainButton from "../mainButton/mainButton";
 import TimerComponent from "../Timer/timerComponent";
 import LosingPage from "../LosingPage/LosingPage";
+import Paused from "../pauseScreen/pauseScreen";
 
 const LevelOne = () => {
   const [score, setScore] = useState(0);
@@ -91,7 +92,7 @@ const LevelOne = () => {
           <div className={styles.topContainer}>
             <div className={styles.miniContainer1}>
               <button className={styles.svg} onClick={setPause}>
-                <img src={pauseButton} alt="Pause" onClick={handleClick} />
+                <img src={pauseButton} alt="Pause"  />
               </button>
               <p className={styles.gameText}>Player 1</p>
             </div>
@@ -161,7 +162,7 @@ const LevelOne = () => {
             }`}
             onClick={continueGame}
           >
-            <MainButton name="Play" />
+           <Paused />
           </div>
           <TimerComponent isRunning={isRunning} countdownTime={countdownTime} />
         </div>

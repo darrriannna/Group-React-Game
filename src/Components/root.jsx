@@ -4,7 +4,7 @@ import UseLink from "./linksDelay/linksDelay";
 
 export default function Root() {
 
-	const nameBtn = 'Play';
+	const nameBtn = 'Start';
 	return (
 		<>
 			<div className="content">

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import '../pauseScreen.css';
+import './pauseStyle.css';
+import MainButton from '../mainButton/mainButton';
 // main component
 function Paused () {
     const [showPausePanel, setShowPausePanel] = useState(false)
@@ -37,10 +38,11 @@ function Paused () {
 
         {setShowPausePanel && (
             <div id="pause-panel" className="pause-panel">
-                <h2>Paused</h2>
-                <button onClick={handleResumeClick}>Resume</button>
-                <button onClick={handleSettingsClick}>Settings</button>
-                <button onClick={handleQuitClick}>Quit game</button>
+                <h2 className='pause-title'>Pause</h2>
+					 <p className='pause-text'>Do you want to continue the game?</p>
+                <MainButton name='Yes'/>
+                {/* <button onClick={handleSettingsClick}>Settings</button> */}
+                <button className='quit-game-btn' onClick={handleQuitClick}>Exit game</button>
             </div>
         )}
         </div>
