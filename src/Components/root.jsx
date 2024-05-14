@@ -10,7 +10,7 @@ export default function Root() {
 			<div className="content">
 				<img className="logo" src={logo} alt="Logo" />
 			</div>
-				<UseLink to="/levelone">
+				<UseLink to="/tutorial">
 					<MainButton name={nameBtn} /> 
 				</UseLink>
 		</>

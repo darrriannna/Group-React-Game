@@ -1,0 +1,40 @@
+.container-tutorial {
+    background-color: #E9E7E7;
+    display: flex;
+    align-items: center;
+
+    width: 1060px;
+    height: 545px;
+    border-radius: 50px 50px 50px 50px;
+    margin-bottom: 20px;
+    
+ 
+}
+
+.tutorial-text-first, .tutorial-text-second {
+    color: #000000;
+    
+}
+
+.p, h2 {
+    font-family: "Montserrat";
+    font-size: 50px;
+}
+
+.tutorial-header {
+    font-family: "Montserrat";
+    color: #92B400;
+}
+
+.tutorial-alien img {
+    width: 180px;
+    height: 360px;
+}
+
+.btn {
+    font-family: "Montserrat";
+    border-radius: 50px;
+    font-size: 47px;
+    font-weight: 500;
+    color: #8d2984;
+}
