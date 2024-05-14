@@ -8,9 +8,9 @@ import Hammer from "../hammer/hammer";
 import clickPause from "../../../public/music/buttonclick.wav";
 import explosionSound from "../../../public/music/bomb-explosion.mp3";
 import ExplosionSVG from "../../assets/images/explosion-boom.svg"; // Import the explosion SVG
-import MainButton from "../mainButton/mainButton";
 import TimerComponent from "../Timer/timerComponent";
 import LosingPage from "../LosingPage/LosingPage";
+import Paused from "../pauseScreen/pauseScreen";
 
 const LevelOne = () => {
   const [score, setScore] = useState(0);
@@ -57,7 +57,7 @@ const LevelOne = () => {
   };
   const continueGame = () => {
     setPaused(false);
-    setIsRunning(true);
+    setIsPlaying(true);
   };
   useEffect(() => {
     if (hearts === 0) {
@@ -91,7 +91,7 @@ const LevelOne = () => {
           <div className={styles.topContainer}>
             <div className={styles.miniContainer1}>
               <button className={styles.svg} onClick={setPause}>
-                <img src={pauseButton} alt="Pause" onClick={handleClick} />
+                <img src={pauseButton} alt="Pause"  />
               </button>
               <p className={styles.gameText}>Player 1</p>
             </div>
@@ -159,9 +159,9 @@ const LevelOne = () => {
             className={`${styles.center} ${
               paused ? styles.visible : styles.hidden
             }`}
-            onClick={continueGame}
+				onClick={continueGame}
           >
-            <MainButton name="Play" />
+				<Paused />
           </div>
           <TimerComponent isRunning={isRunning} countdownTime={countdownTime} />
         </div>

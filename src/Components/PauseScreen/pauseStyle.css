@@ -1,0 +1,52 @@
+.hidden {
+    visibility: hidden;
+}
+
+.visible {
+    visibility: visible;
+}
+.pause-title{
+	color: #000;
+	text-transform: uppercase;
+	font-size: 40px;
+	font-weight: 900;
+	margin: 0;
+}
+#pause-panel {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    padding: 15px;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 600px;
+	background: #E9E7E7;
+	border-radius: 50px;
+}
+.pause-panel{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 15px;
+}
+
+.pause-text{
+	margin: 0 0 17px 0;
+	color: #92B400;
+	font-size: 32px;
+	text-align: center;
+	font-weight: 800;
+	line-height: 1.1;
+}
+.resume-btn{
+	margin-bottom: 15px;
+}
+.quit-game-btn{
+	color: #000;
+	font-size: 30px;
+	font-weight: 900;
+	padding: 0;
+}
+.quit-game-btn:hover{
+	text-decoration: underline;
+}
