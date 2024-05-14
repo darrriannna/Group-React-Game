@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import '../pauseScreen.css';
 
 const pauseWindow = () => {
 
