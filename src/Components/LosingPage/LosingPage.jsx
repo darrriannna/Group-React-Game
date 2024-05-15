@@ -14,10 +14,10 @@ export default function LosingPage() {
   const score = location.state?.score || 0;
   
 
-  console.log("score within losingpage: " + score)
+  
   useEffect(() => {
      setConfirmation(true);
-     console.log("Confirmation occurs")
+    
     if (confirmation) {
       window.confirm("GAME OVER!");
     }

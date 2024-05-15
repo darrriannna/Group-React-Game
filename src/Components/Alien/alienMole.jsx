@@ -11,7 +11,7 @@ const AlienMole = ({ alienId, onAlienClick, onBombClick }) => {
     const handleAlienClick = useCallback(() => {
         setIsVisible(false);
         if (!isAlien) {
-            console.log("Boom!");
+           
 				onBombClick()
         } else {
             onAlienClick();

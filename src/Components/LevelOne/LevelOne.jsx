@@ -22,7 +22,7 @@ const LevelOne = () => {
   const [paused, setPaused] = useState(false);
   const navigate = useNavigate();
 
-  console.log("IS RUNNING: ", isRunning);
+  
 
 
   const scoreIncrease = () => {
@@ -66,8 +66,6 @@ const LevelOne = () => {
 
   useEffect(() => {
 
-    console.log("Score:", score);
-    console.log("score in levelone: ", score);
     if (!isRunning && gameOver) {
       if (score > 500) {
         navigate("/winPage", { state: { score } });
