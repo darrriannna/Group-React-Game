@@ -5,60 +5,59 @@ import heart from "../../assets/icons/Heart-game-red.svg";
 import grayHeart from "../../assets/icons/Heart-game-gray.svg";
 import AlienMole from "../Alien/alienMole";
 import Hammer from "../hammer/hammer";
-import clickPause from "../../../public/music/buttonclick.wav";
 import explosionSound from "../../../public/music/bomb-explosion.mp3";
-import ExplosionSVG from "../../assets/images/explosion-boom.svg"; // Import the explosion SVG
-import TimerComponent from "../Timer/timerComponent";
+import ExplosionSVG from "../../assets/images/explosion-boom.svg";
+import Timer from "../Timer/timerComponent";
 import LosingPage from "../LosingPage/LosingPage";
 import Paused from "../PauseScreen/pauseScreen";
+import { useNavigate } from "react-router-dom";
+
 
 const LevelOne = () => {
   const [score, setScore] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(false);
   const [isRunning, setIsRunning] = useState(true);
   const [hearts, setHearts] = useState(3);
   const [gameOver, setGameOver] = useState(false);
-  const [showExplosion, setShowExplosion] = useState(false); // State to control the visibility of the explosion SVG
+  const [showExplosion, setShowExplosion] = useState(false);
   const [paused, setPaused] = useState(false);
-  const [countdownTime, setCountdownTime] = useState(Date.now() + 120000);
+  const navigate = useNavigate();
 
   console.log("IS RUNNING: ", isRunning);
+
+
   const scoreIncrease = () => {
-    setScore(score + 10);
+    setScore(score + 10); // Update score when points are earned
   };
 
   const bombClick = () => {
     audioExplosion.play();
     if (hearts > 0) {
       setHearts(hearts - 1);
-      setShowExplosion(true); // Show explosion SVG
+      setShowExplosion(true);
       setTimeout(() => {
-        setShowExplosion(false); // Hide explosion SVG after 3 seconds
+        setShowExplosion(false);
       }, 1000);
     }
   };
 
-  const audioClick = new Audio(clickPause);
   const audioExplosion = new Audio(explosionSound);
-
-  const handleClick = () => {
-    if (!isPlaying) {
-      audioClick.play();
-      setIsPlaying(true);
-      audioClick.addEventListener("ended", () => {
-        setIsPlaying(false);
-      });
-    }
-  };
 
   const setPause = () => {
     setPaused(true);
     setIsRunning(false);
   };
+
   const continueGame = () => {
     setPaused(false);
-	setIsRunning(true);
+    setIsRunning(true);
   };
+
+  const stopGame = () => {
+    setIsRunning(false);
+    setGameOver(true);
+
+  };
+
   useEffect(() => {
     if (hearts === 0) {
       setGameOver(true);
@@ -66,21 +65,22 @@ const LevelOne = () => {
   }, [hearts]);
 
   useEffect(() => {
-    let timerId;
 
-    if (isRunning) {
-      // Calculate remaining time based on original countdown time and elapsed time
-      const remainingTime = countdownTime - Date.now();
-
-      // Start the countdown timer
-      timerId = setTimeout(() => {
-        setCountdownTime(Date.now() + remainingTime); // Update countdown time based on remaining time
-      }, remainingTime);
+    console.log("Score:", score);
+    console.log("score in levelone: ", score);
+    if (!isRunning && gameOver) {
+      if (score > 500) {
+        navigate("/winPage", { state: { score } });
+      } else {
+        navigate("/losingPage", { state: { score } });
+      }
     }
+  }, [isRunning, gameOver, score, navigate]);
 
-    // Clear the timer when component unmounts or when game ends
-    return () => clearTimeout(timerId);
-  }, [countdownTime, isRunning]);
+
+
+
+
 
   return (
     <>
@@ -91,7 +91,7 @@ const LevelOne = () => {
           <div className={styles.topContainer}>
             <div className={styles.miniContainer1}>
               <button className={styles.svg} onClick={setPause}>
-                <img src={pauseButton} alt="Pause"  />
+                <img src={pauseButton} alt="Pause" />
               </button>
               <p className={styles.gameText}>Player 1</p>
             </div>
@@ -118,9 +118,8 @@ const LevelOne = () => {
               {showExplosion && (
                 <img
                   src={ExplosionSVG}
-                  className={`${styles.explosion} ${
-                    showExplosion && styles.boom
-                  }`}
+                  className={`${styles.explosion} ${showExplosion && styles.boom
+                    }`}
                 />
               )}
               <AlienMole
@@ -156,13 +155,12 @@ const LevelOne = () => {
             </>
           )}
           <div
-            className={`${styles.center} ${
-              paused ? styles.visible : styles.hidden
-            }`}
+            className={`${styles.center} ${paused ? styles.visible : styles.hidden
+              }`}
           >
-				<Paused continueGame={continueGame}/>
+            <Paused continueGame={continueGame} />
           </div>
-          <TimerComponent isRunning={isRunning} countdownTime={countdownTime} />
+          <Timer initialTime={120} onStop={stopGame} paused={paused} />
         </div>
       )}
       <Hammer />

@@ -1,27 +1,47 @@
-import Countdown from 'react-countdown';
+import { useState, useEffect } from "react";
 import styles from '../LevelOne/LevelOne.module.css'
+
 // eslint-disable-next-line react/prop-types
-const TimerComponent = ({ countdownTime, isRunning }) => {
+const Timer = ({ initialTime, onStop, paused }) => {
+  const [timeLeft, setTimeLeft] = useState(initialTime);
 
-    const renderer = ({ minutes, seconds, completed}) => {
+  useEffect(() => {
+    let timer = null;
 
-        const paddedMinutes = String(minutes).padStart(2, '0');
-        const paddedSeconds = String(seconds).padStart(2, '0');
-        if (completed) {
-            
-            // Render a completed state
-            return <span className={styles.gameText}>Ding!</span>;
-        } else {
-            // Render a countdown
-            return <span  className={styles.gameText}>{paddedMinutes}:{paddedSeconds}</span>;
-        }
-    };
+    if (!paused) {
+      timer = setInterval(() => {
+        setTimeLeft((prevTimeLeft) => {
+          if (prevTimeLeft <= 0) {
+            clearInterval(timer);
+            onStop(); // Call the onStop function when the timer reaches zero
+            return 0;
+          }
+          return prevTimeLeft - 1;
+        });
+      }, 1000);
+    }
 
-    return (
-        <div className={styles.bottomContainer}>
-         {isRunning && <Countdown date={countdownTime} renderer={renderer} />}
-     </div>
-    )
-}
+    return () => clearInterval(timer);
+  }, [initialTime, onStop, paused]);
 
-export default TimerComponent
+  useEffect(() => {
+    if (timeLeft === 0) {
+      // If time is up, call the onStop function to navigate to a different page
+      onStop();
+    }
+  }, [timeLeft, onStop]);
+
+  const minutes = Math.floor(timeLeft / 60);
+  const seconds = timeLeft % 60;
+
+  return (
+    <div className={styles.bottomContainer}>
+      <span className={styles.gameText}>
+        {minutes < 10 ? `0${minutes}` : minutes}:
+        {seconds < 10 ? `0${seconds}` : seconds}
+      </span>
+    </div>
+  );
+};
+
+export default Timer;

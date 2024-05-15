@@ -3,14 +3,18 @@ import styles from "./winPage.module.css";
 import goBackMenu from "../../assets/icons/Go-back-menu.svg";
 import astronautWon from "../../assets/images/Austonaut-won.svg";
 import crowdCheer from "../../../public/music/crowd-cheer.mp3";
+import { useLocation } from "react-router-dom";
 
 // eslint-disable-next-line react/prop-types
-const WinPage = ({ score }) => {
-  // eslint-disable-next-line no-undef
+const WinPage = () => {
+  const location = useLocation();
+  const score = location.state?.score || 0;
   useEffect(() => {
     const audio = new Audio(crowdCheer);
     audio.play();
   }, []);
+
+  
 
   const handleGoBack = () => {
     // Function to handle going back to LevelOne page

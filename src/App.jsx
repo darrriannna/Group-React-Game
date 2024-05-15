@@ -21,9 +21,9 @@ function App() {
     <Router>
       <div className="container sky-background">
         <Routes>
-          <Route path="levelone" element={<LevelOne />} />
-          <Route path="loosingPage" element={<LosingPage />} />
-          <Route path="winPage" element={<WinPage />} />
+          <Route path="/levelone" element={<LevelOne />} />
+          <Route path="/losingPage" element={<LosingPage />} />
+          <Route path="/winPage" element={<WinPage />} />
           <Route path="/" element={<Root />} />
           <Route path='/tutorial' element={<TutorialScreen />} />
         </Routes>
