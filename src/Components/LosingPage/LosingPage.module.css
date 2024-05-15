@@ -51,7 +51,7 @@ html {
 .loosingPageScore {
   width: 60%;
   font-size: 50px;
-  color: rgb(80, 200, 80);
+  color: red;
 }
 
 .middleDiv {
