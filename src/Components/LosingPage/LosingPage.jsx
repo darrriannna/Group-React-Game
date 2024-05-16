@@ -7,11 +7,10 @@ import LevelOne from "../LevelOne/LevelOne"; // Import LevelOne component
 import { useLocation } from "react-router-dom";
 
 // eslint-disable-next-line react/prop-types
-export default function LosingPage() {
+export default function LosingPage({score}) {
   const [confirmation, setConfirmation] = useState(false);
   const [showLevelOne, setShowLevelOne] = useState(false); // State to toggle between LoosingPage and LevelOne
   const location = useLocation();
-  const score = location.state?.score || 0;
   
 
   

@@ -37,7 +37,7 @@ const Hammer = () => {
             }
 
             clicked.style.transition = 'transform 0.1s';
-            clicked.style.transform = 'rotate(-30deg)';
+            clicked.style.transform = 'rotate(-55deg)';
             setTimeout(() => {
                 clicked.style.removeProperty('transform');
             }, 100);

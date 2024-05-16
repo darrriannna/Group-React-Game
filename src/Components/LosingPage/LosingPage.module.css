@@ -14,8 +14,9 @@ html {
 }
 
 .loosingPageContainer {
+  display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   height: 100vh;
   box-sizing: border-box;
@@ -60,11 +61,14 @@ html {
   align-items: center;
   width: 100%;
   height: 200px;
+  margin-bottom: auto;
 }
-
 .flyingAstronaut {
   width: 40%;
   margin-left: auto;
+}
+.strongAlien{
+	max-height: 475px;
 }
 .strongAlien img {
   width: 100%;
