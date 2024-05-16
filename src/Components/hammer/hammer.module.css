@@ -1,12 +1,12 @@
 .cursor {
   position: absolute;
   z-index: 999;
-  height: 125px;
+  height: 175px;
   cursor: none;
   pointer-events: none;
 }
 .cursor img {
-  width: 125px;
+  width: 175px;
   -webkit-transform: translate(-40px, -60px);
           transform: translate(-40px, -60px);
   pointer-events: none;
@@ -18,8 +18,8 @@
             transform: rotate(0deg);
   }
   100% {
-    -webkit-transform: rotate(-30deg);
-            transform: rotate(-30deg);
+    -webkit-transform: rotate(175deg);
+            transform: rotate(175deg);
   }
 }
 
@@ -29,7 +29,7 @@
             transform: rotate(0deg);
   }
   100% {
-    -webkit-transform: rotate(-30deg);
-            transform: rotate(-30deg);
+    -webkit-transform: rotate(175deg);
+            transform: rotate(175deg);
   }
 }
