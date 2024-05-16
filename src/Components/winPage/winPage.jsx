@@ -1,36 +1,34 @@
 import { useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import styles from "./winPage.module.css";
 import goBackMenu from "../../assets/icons/Go-back-menu.svg";
 import astronautWon from "../../assets/images/Austonaut-won.svg";
 import crowdCheer from "../../../public/music/crowd-cheer.mp3";
-import { useLocation } from "react-router-dom";
 
-// eslint-disable-next-line react/prop-types
-const WinPage = () => {
+export default function WinningPage() {
   const location = useLocation();
+  const navigate = useNavigate();
   const score = location.state?.score || 0;
+
   useEffect(() => {
     const audio = new Audio(crowdCheer);
     audio.play();
   }, []);
 
-  
-
   const handleGoBack = () => {
-    // Function to handle going back to LevelOne page
-    window.location.href = "/levelOne";
+    navigate("/levelone");
   };
 
   return (
     <div className={styles.winPageContainer}>
-      <div className={styles.goBack} onClick={handleGoBack}>
-        <img src={goBackMenu} alt="Go back icon" />
+      <div className={styles.goBack}>
+        <img  src={goBackMenu} onClick={handleGoBack} alt="Go back icon" />
       </div>
 
       <div className={styles.winMiddleContainer}>
         <div className={styles.winInfo}>
           <h1>Congratulations! You Won!!!</h1>
-          <h2>Bye Bye Aliens! </h2>
+          <h2>Bye Bye Aliens!</h2>
           <h2 className={styles.winScore}>Your Score: {score}</h2>
         </div>
       </div>
@@ -43,6 +41,4 @@ const WinPage = () => {
       </div>
     </div>
   );
-};
-
-export default WinPage;
+}

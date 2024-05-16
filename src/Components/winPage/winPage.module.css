@@ -22,7 +22,6 @@ winInfo h2 {
 }
 .winMiddleContainer {
   display: flex;
-  width: 100%;
   height: 300px;
   justify-content: center;
   align-items: center;
@@ -32,6 +31,7 @@ winInfo h2 {
 
 .winInfo {
   text-align: center;
+
 }
 .winScore {
   color: green;
