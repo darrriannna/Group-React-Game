@@ -13,6 +13,7 @@
 
 .tutorial-header {
     display: flex;
+    align-items: center;
   
 }
 
@@ -48,8 +49,6 @@
     color: #000000;
     font-size: 25px;
     font-weight:  solid 1000;
-    
-    
 }
 
 .p, h2 {
