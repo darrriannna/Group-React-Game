@@ -1,74 +1,99 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Montserrat:wght@700..900&display=swap");
+
+
 .container-tutorial {
     background-color: #E9E7E7;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 1120px;
-    height: 580px;
-    border-radius: 50px 50px 50px 50px;
-    margin-bottom: 20px;
-    position: relative;
+    width: 1000px;
+    height: 700px;
+    border-radius: 50px;
+    border: 2px solid black;
     
 }
+
+
+
 
 .tutorial-header {
     display: flex;
     align-items: center;
-  
+    font-family: "Montserrat";
+    color: #92B400;
+    justify-content: space-between;
+    width: 900px;
+    
 }
 
 .tutorial-text-first {
     display: flex;
-    width: 450px;
+    width: 600px;
     height: 200px;
     position: relative;
-    right: 200px;
-    bottom: 50px;
+    right: 150px;
+    bottom: 30px;
 
     
 }
 
 .tutorial-text-second {
     display: flex;
-    width: 600px;
+    width: 450px;
     height: 250px;
     position: relative;
-    bottom: 100px;
-    right: 150px;
+    bottom: 50px;
+    right: 200px;
+    
 }
 
 .tutorial-icons {
     display: flex;
     position: relative;
-    right: 300px;
-    bottom: 110px;
-    
+    right: 250px;
+    bottom: 60px;
+    align-items: baseline;
+    justify-content: space-around;
+    width: 350px;
 }
 
 .tutorial-text-first, .tutorial-text-second {
+    display: flex;
     color: #000000;
     font-size: 25px;
-    font-weight:  solid 1000;
+    font-family: "Montserrat";
+    font-weight: 900;
+    line-height: 50px;
+    flex-wrap: wrap;
 }
 
-.p, h2 {
+p {
     font-family: "Montserrat";
-    font-size: 50px;
+    font-size: 29px;
 }
 
-.tutorial-header {
-    font-family: "Montserrat";
-    color: #92B400;
+h2 {
+
+font-family: "Montserrat";
+font-size: 50px;
 }
+
 
 .tutorial-alien {
     position: relative;
-    left: 350px;
-    bottom: 500px;
+    left: 250px;
+    bottom: 550px;
 }
 
 .tutorial-alien img {
     width: 180px;
     height: 360px;
 }
+
+.tutorial-btn {
+    position: relative;
+    left: 250px;
+    bottom: 550px;
+}
+
 

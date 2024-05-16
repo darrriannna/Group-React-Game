@@ -7,6 +7,7 @@ const TutorialScreen = () => {
     const nameBtn = 'Play';
     return (
        <div className="container-tutorial">
+
         <div className="tutorial-header">
         <h2>Aliens attacked the moon!</h2>
         <img src="../src/assets/icons/Exit-cross-rules.svg" alt="Exit cross" />
@@ -28,10 +29,13 @@ const TutorialScreen = () => {
         <div className="tutorial-alien">
             <img src="../src/assets/images/Sad-alien-rules.svg" alt="Alien" />
         </div>
+        
+        <div className='tutorial-btn'>
         <UseLink to="/levelone">
 		<MainButton name={nameBtn} /> 
-		</UseLink>			
-
+		</UseLink>
+        </div>			
+        
        </div>     
     )};
 
