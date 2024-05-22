@@ -6,7 +6,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 
 const AlienMole = ({ alienId, onAlienClick, onBombClick }) => {
     const [isVisible, setIsVisible] = useState(false);
-    const [isAlien, setIsAlien] = useState(true); // State to track whether to render alien or bomb
+    const [isAlien, setIsAlien] = useState(true); 
 
     const handleAlienClick = useCallback(() => {
         setIsVisible(false);
@@ -22,25 +22,25 @@ const AlienMole = ({ alienId, onAlienClick, onBombClick }) => {
         const timer = setTimeout(() => {
             const randomValue = Math.random();
             if (randomValue < 0.7) {
-                setIsVisible(isVisible => !isVisible); // Toggle visibility
-                setIsAlien(true); // Render alien
+                setIsVisible(isVisible => !isVisible); 
+                setIsAlien(true); 
             } else {
-                setIsVisible(true); // Show the bomb
-                setIsAlien(false); // Render bomb
-                // Set a delay before switching back to alien
+                setIsVisible(true); 
+                setIsAlien(false); 
+                
                 setTimeout(() => {
                     setIsVisible(false);
-                    setIsAlien(true); // Reset to render alien next time
-                }, 5000); // Set a short delay before switching back to alien
-                // Set a timer to hide the bomb after a certain delay
+                    setIsAlien(true); 
+                }, 5000); 
+                
                 setTimeout(() => {
                     setIsVisible(false);
-                }, getRandomDelay(1000, 3000)); // Set a short delay for bomb disappearance
+                }, getRandomDelay(1000, 3000)); 
             }
-        }, getRandomDelay(3000, 8000)); // Delay for appearance and disappearance
+        }, getRandomDelay(3000, 8000)); 
 
         return () => clearTimeout(timer);
-    }, [isVisible, isAlien]); // Update useEffect dependencies
+    }, [isVisible, isAlien]); 
 
     const getRandomDelay = (min, max) => {
         return Math.floor(Math.random() * (max - min + 1) + min);
@@ -51,8 +51,8 @@ const AlienMole = ({ alienId, onAlienClick, onBombClick }) => {
             className={`${styles.alien} ${alienId} ${
                 isVisible ? styles.appear : styles.disappear
             }`}
-            src={isAlien ? alien : bomb} // Render either alien or bomb based on state
-            alt={isAlien ? "alien" : "bomb"} // Set alt text accordingly
+            src={isAlien ? alien : bomb} 
+            alt={isAlien ? "alien" : "bomb"} 
             onClick={handleAlienClick}
         />
     );

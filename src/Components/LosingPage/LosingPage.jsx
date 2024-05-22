@@ -4,13 +4,12 @@ import goBackMenu from "../../assets/icons/Go-back-menu.svg";
 import astronautFlying from "../../assets/images/austronaut-levitating.svg";
 import strongAlien from "../../assets/images/Strong-alien-moon.svg";
 import LevelOne from "../LevelOne/LevelOne"; // Import LevelOne component
-import { useLocation } from "react-router-dom";
 
 // eslint-disable-next-line react/prop-types
 export default function LosingPage({score}) {
   const [confirmation, setConfirmation] = useState(false);
   const [showLevelOne, setShowLevelOne] = useState(false); // State to toggle between LoosingPage and LevelOne
-  const location = useLocation();
+  
   
 
   
@@ -24,7 +23,7 @@ export default function LosingPage({score}) {
    
   }, [confirmation]);
 
-  // Function to handle going back to LevelOne page
+  
   const handleGoBack = () => {
     window.location.href = "/levelOne";
     setShowLevelOne(true);

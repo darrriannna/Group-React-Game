@@ -8,7 +8,7 @@ const Hammer = () => {
     const clickRef = useRef(null);
     const audioRef = useRef(new Audio(clickSound));
     const [isPlaying, setIsPlaying] = useState(false);
-    const hammerImageRef = useRef(null); // Ref to memoize the hammer image element
+    const hammerImageRef = useRef(null); 
 
     useEffect(() => {
         const cursor = cursorRef.current;
@@ -43,7 +43,7 @@ const Hammer = () => {
             }, 100);
         };
 
-        // Add passive option for better performance
+        
         window.addEventListener('mousemove', handleMouseMove, { passive: true });
         window.addEventListener('click', handleClick);
 
@@ -54,7 +54,7 @@ const Hammer = () => {
         };
     }, [isPlaying]);
 
-    // Memoize the hammer image element to prevent unnecessary re-renders
+    
     if (!hammerImageRef.current) {
         hammerImageRef.current = (
             <img  src={hammer} alt="hammer" />

@@ -1,25 +1,19 @@
 import React, { useState } from 'react';
 
-const pauseWindow = () => {
+const PauseWindow = () => {
 
 // main component
 
     const [showPausePanel, setShowPausePanel] = useState(false)
 
-    // function to handle click event on the pause button
-    const handlePauseClick = () => {
-        setShowPausePanel(true);
-    };
+   
 
     //function to handle click event on the resume button
     const handleResumeClick = () => {
         setShowPausePanel(false);
     };
 
-    //function to handle click event on the settings button
-    const handleSettingsClick = () => {
-        // add settings logic here
-    };
+
     
     // function to handle the click event on the quit button
     const handleQuitClick = () => {
@@ -37,4 +31,4 @@ const pauseWindow = () => {
       )
     }
 
-export default pauseWindow
+export default PauseWindow
